@@ -2,9 +2,10 @@ require("dotenv").config();
 import express from "express";
 import "express-async-errors";
 import cors from "cors";
-import { userRoutes } from "./routes/user.routes";
+// import { userRoutes } from "./routes/user.routes";
 import { authRoutes } from "./routes/auth.routes";
-import { productsRoutes } from "./routes/products.routes";
+import { shopRoutes } from "./routes/shop.routes";
+// import { productsRoutes } from "./routes/products.routes";
 import { ErrorMiddleware } from "./middleware/ErrorMiddleware";
 import cookieParser from "cookie-parser";
 const app = express();
@@ -13,8 +14,9 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/user", userRoutes);
+// app.use("/user", userRoutes);
 app.use("/auth", authRoutes);
+app.use("/shop", shopRoutes);
 
 
 app.listen(process.env.PORT);
