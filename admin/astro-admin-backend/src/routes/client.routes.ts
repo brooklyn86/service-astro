@@ -5,17 +5,17 @@ import { ClientController } from "../modules/Client/controllers/ClientController
 export const clientRoutes = express.Router();
 
 clientRoutes.post("/", AuthMiddleware, async (request, response) => {
-  const { firstName, lastName,cnpj, active } = request.body;
+  const { firstName, lastName, cnpj, active } = request.body;
   const clientController = new ClientController();
-  const client = await clientController.create({ firstName, lastName,cnpj, active });
+  const client = await clientController.create({ firstName, lastName, cnpj, active });
   return response.status(201).json(client);
 });
 
 clientRoutes.get("/", async (request, response) => {
-  const { id, firstName, lastName,cnpj, active} = request.query;
+  const { id, firstName, lastName, cnpj, active } = request.query;
   const clientController = new ClientController();
   //@ts-ignore
-  const client = await clientController.findMany({ id, firstName, lastName,cnpj, active });
+  const client = await clientController.findMany({ id, firstName, lastName, cnpj, active });
   return response.status(200).json(client);
 });
 
@@ -28,9 +28,9 @@ clientRoutes.get("/:id", AuthMiddleware, async (request, response) => {
 
 clientRoutes.put("/:id", AuthMiddleware, async (request, response) => {
   const { id } = request.params;
-  const { firstName, lastName,cnpj, active } = request.body;
+  const { firstName, lastName, cnpj, active } = request.body;
   const clientController = new ClientController();
-  await clientController.update({ id, firstName, lastName,cnpj, active });
+  await clientController.update({ id, firstName, lastName, cnpj, active });
   return response.status(204).json();
 });
 

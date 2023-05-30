@@ -29,9 +29,9 @@ shopRoutes.get("/:id", AuthMiddleware, async (request, response) => {
 
 shopRoutes.put("/:id", AuthMiddleware, async (request, response) => {
   const { id } = request.params;
-  const { title, active, profile } = request.body;
+  const { title, client_id, category_id, active, profile } = request.body;
   const shopController = new ShopController();
-  await shopController.update({ id, title, active, profile });
+  await shopController.update({id, title, client_id, category_id, active, profile});
   return response.status(204).json();
 });
 
