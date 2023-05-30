@@ -1,5 +1,4 @@
 import express from "express";
-import { AuthController } from "../modules/Auth/controllers/AuthController";
 import { ShopController } from "../modules/Shop/controllers/ShopController";
 import { AuthMiddleware } from "../middleware/AuthMiddleware";
 
