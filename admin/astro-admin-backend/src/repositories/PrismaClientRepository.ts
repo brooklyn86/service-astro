@@ -1,5 +1,5 @@
 
-import { prisma } from "../../prisma";
+import { prisma } from "../prisma";
 import { ICreateClientData, ICreateClientResponse, IFindClientData, IFindManyClientData, IFindClientResponse, IClientRepository, IUpdateClientData, IDeleteClientData, IFindClientUseCaseResponse } from "./Interfaces/IClientRepository";
 
 export class PrismaClientRepository implements IClientRepository {
@@ -21,7 +21,7 @@ export class PrismaClientRepository implements IClientRepository {
         return { id: client.id };
     }
 
-    async find({ id }: IFindClientData): Promise<IFindClientUseCaseResponse> {
+    async find({ id }: IFindClientData): Promise<IFindClientUseCaseResponse | undefined> {
         const client = await prisma.client.findFirst({
             where: {
                 id
@@ -37,7 +37,7 @@ export class PrismaClientRepository implements IClientRepository {
                 }
             }
         });
-        return client;
+        return client as IFindClientUseCaseResponse | undefined;
     }
 
     async findMany({ query }: IFindManyClientData): Promise<IFindClientUseCaseResponse[]> {

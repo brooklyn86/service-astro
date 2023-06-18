@@ -1,4 +1,4 @@
-import { IUserRepository } from '../../../repositories/User/Interfaces/IUserRepository';
+import { IUserRepository } from '../../../repositories/Interfaces/IUserRepository';
 
 interface IUpdateUserUseCaseRequest {
     id: string;

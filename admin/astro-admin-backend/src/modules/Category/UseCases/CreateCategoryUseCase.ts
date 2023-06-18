@@ -1,7 +1,6 @@
-import { ICategoryRepository } from "../../../repositories/User/Interfaces/ICategoryRepository"
+import { ICategoryRepository } from "../../../repositories/Interfaces/ICategoryRepository"
 
 export interface ICreateCategoryUseCaseRequest {
-    id: string,
     title: string,
     active: boolean
 }
@@ -12,11 +11,11 @@ export interface ICreateCategoryUseCaseResponse {
 
 export class CreateCategoryUseCase {
     constructor(
-        private  categoryRepository: ICategoryRepository
+        private categoryRepository: ICategoryRepository
     ){}
 
     async execute(request: ICreateCategoryUseCaseRequest): Promise<ICreateCategoryUseCaseResponse> {
-        const { id, title, active } = request;
-        return await this.categoryRepository.create({id, title, active});
+        const { title, active } = request;
+        return await this.categoryRepository.create({ title, active});
     }
 }

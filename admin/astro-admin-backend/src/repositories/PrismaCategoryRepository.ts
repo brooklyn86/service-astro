@@ -1,4 +1,4 @@
-import { prisma } from "../../prisma";
+import { prisma } from "../prisma";
 import {
   ICategoryRepository,
   ICreateCategoryData,
@@ -13,13 +13,11 @@ import {
 
 export class PrismaCategoryRepository implements ICategoryRepository {
   async create({
-    id,
     title,
     active,
   }: ICreateCategoryData): Promise<ICreateCategoryResponse> {
     const category = await prisma.category.create({
       data: {
-        id: id,
         title: title,
         active: active,
       },
@@ -27,7 +25,7 @@ export class PrismaCategoryRepository implements ICategoryRepository {
     return { id: category.id };
   }
 
-  async find({ id }: IGetCategoryData): Promise<IGetCategoryResponse> {
+  async find({ id }: IGetCategoryData): Promise<IGetCategoryResponse | null> {
     const category = await prisma.category.findFirst({
       where: {
         id,

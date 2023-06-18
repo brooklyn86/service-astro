@@ -1,7 +1,6 @@
-import { IShop } from "../../../repositories/User/Interfaces/ICategoryRepository"
+import { IShop } from "../../../repositories/Interfaces/ICategoryRepository"
 
 export interface ICreateCategory {
-    id: string;
     title: string;
     active: boolean;
 }

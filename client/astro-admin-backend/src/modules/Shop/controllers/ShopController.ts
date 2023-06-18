@@ -1,6 +1,6 @@
 
 import { AppMessageError } from "../../../errors/AppMessageError";
-import { PrismaShopRepository } from "../../../repositories/User/PrismaShopRepository";
+import { PrismaShopRepository } from "../../../repositories/PrismaShopRepository";
 import { CreateShopUseCase } from "../UseCases/CreateShopUseCase";
 import {
     ICreateShop,

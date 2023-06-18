@@ -1,4 +1,4 @@
-import { PrismaUserRepository } from './../../../repositories/User/PrismaUserRepository';
+import { PrismaUserRepository } from './../../../repositories/PrismaUserRepository';
 
 import {
     IUserController,

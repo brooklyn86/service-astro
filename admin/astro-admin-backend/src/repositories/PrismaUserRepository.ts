@@ -1,11 +1,12 @@
-import { prisma } from "../../prisma";
+import { prisma } from "../prisma";
 import {
     IIsUniqueEmail,
     IFindUserData,
     ICreateUserData,
     IDeleteUserData,
     IUpdateUserData,
-    IUserRepository
+    IUserRepository,
+    IFindManyUserData
 } from "./Interfaces/IUserRepository";
 
 export class PrismaUserRepository implements IUserRepository {
@@ -42,7 +43,7 @@ export class PrismaUserRepository implements IUserRepository {
             },
         });
     }
-    async findMany({ query }: IFindUserData): Promise<any[]> {
+    async findMany({ query }: IFindManyUserData): Promise<any[]> {
         const users = await prisma.user.findMany(query)
         //@ts-ignore
         return users;

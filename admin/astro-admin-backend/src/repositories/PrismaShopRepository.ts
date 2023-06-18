@@ -1,5 +1,5 @@
 
-import { prisma } from "../../prisma";
+import { prisma } from "../prisma";
 import { ICreateShopData, ICreateShopResponse, IFindShopData, IFindManyShopData, IFindShopResponse, IShopRepository, IUpdateShopData, IDeleteShopData } from "./Interfaces/IShopRepository";
 
 export class PrismaShopRepository implements IShopRepository {

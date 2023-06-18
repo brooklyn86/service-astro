@@ -1,5 +1,5 @@
 import { AppMessageError } from "./../../../errors/AppMessageError";
-import { PrismaUserRepository } from "./../../../repositories/User/PrismaUserRepository";
+import { PrismaUserRepository } from "./../../../repositories/PrismaUserRepository";
 import {
   IAuthController,
   ILogin,

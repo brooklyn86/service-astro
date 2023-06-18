@@ -1,4 +1,4 @@
-import { IClientRepository } from "../../../repositories/User/Interfaces/IClientRepository";
+import { IClientRepository } from "../../../repositories/Interfaces/IClientRepository";
 
 
 interface ICreateClientUseCaseRequest {

@@ -56,10 +56,10 @@ export interface IFindClientUseCaseResponse {
     lastName: string;
     cnpj: string;
     active: boolean;
-    emails: IFindClientEmails[];
-    address: IFindClientAddress[];
-    phones: IFindClientPhones[];
-    shops: IFindClientShops[];
+    emails: IFindClientEmails[] | undefined;
+    address: IFindClientAddress[] | undefined;
+    phones: IFindClientPhones[]  | undefined;
+    shops: IFindClientShops[] | undefined;
 }
 
 interface IFindClientEmails {
@@ -114,7 +114,7 @@ interface IFindClientShopProfileData {
 
 
 export interface IClientRepository {
-    find: (data: IFindClientData) => Promise<IFindClientUseCaseResponse>;
+    find: (data: IFindClientData) => Promise<IFindClientUseCaseResponse | undefined>;
     findMany: (data: IFindManyClientData) => Promise<IFindClientUseCaseResponse[]>;
     create: (data: ICreateClientData) => Promise<ICreateClientResponse>;
     update: (data: IUpdateClientData) => Promise<void>;

@@ -38,7 +38,7 @@ shopRoutes.put("/:id", AuthMiddleware, async (request, response) => {
 });
 
 shopRoutes.delete("/:id", AuthMiddleware, async (request, response) => {
-  const { id } = request.params;
+  const { id } = findShopSchema.parse(request.params);
   const shopController = new ShopController();
   await shopController.delete({ id });
   return response.status(204).json();

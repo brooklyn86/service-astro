@@ -1,5 +1,4 @@
 export interface ICreateCategoryData {
-  id: string;
   title: string;
   active: boolean;
 }
@@ -50,7 +49,7 @@ export interface IDeleteCategoryData {
 
 export interface ICategoryRepository {
   create: (data: ICreateCategoryData) => Promise<ICreateCategoryResponse>;
-  find: (data: IGetCategoryData) => Promise<IGetCategoryResponse>;
+  find: (data: IGetCategoryData) => Promise<IGetCategoryResponse | null>;
   findMany: (data: IGetAllCategoryData) => Promise<IGetAllCategoryResponse[]>;
   update: (data: IUpdateCategoryData) => Promise<void>;
   delete: (data: IDeleteCategoryData) => Promise<void>;

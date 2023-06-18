@@ -1,7 +1,10 @@
 import { z } from 'zod';
 
 const createCategorySchema = z.object({
-    username: z.string(),
-    password: z.string(),
+    title: z.string(),
+    active: z.boolean(),
+
 });
+
+
 export default createCategorySchema;

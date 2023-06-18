@@ -20,8 +20,8 @@ export interface IDeleteUserData {
 }
 export interface IFindUserData {
     id?: string;
-    username?: string
-    email?: string
+    username?: string;
+    email?: string;
 }
 
 export interface IFindManyUserData {

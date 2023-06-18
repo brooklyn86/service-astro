@@ -1,5 +1,5 @@
 import { AppMessageError } from "./../../../errors/AppMessageError";
-import { IUserRepository } from "../../../repositories/User/Interfaces/IUserRepository";
+import { IUserRepository } from "../../../repositories/Interfaces/IUserRepository";
 import { ICryptAdapter } from "../../../adapters/interfaces/ICryptAdapter";
 import { IClassValidatorAdapter } from "../../../adapters/interfaces/IClassValidatorAdapter";
 import * as jwt from "jsonwebtoken";

@@ -1,4 +1,4 @@
-import { ICategoryRepository } from "../../../repositories/User/Interfaces/ICategoryRepository"
+import { ICategoryRepository } from "../../../repositories/Interfaces/ICategoryRepository"
 
 export interface IFindCategoryUseCaseRequest {
     id: string

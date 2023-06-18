@@ -1,6 +1,6 @@
 
 import { AppMessageError } from "../../../errors/AppMessageError";
-import { PrismaClientRepository } from "../../../repositories/User/PrismaClientRepository";
+import { PrismaClientRepository } from "../../../repositories/PrismaClientRepository";
 import { CreateClientUseCase } from "../UseCases/CreateClientUseCase";
 import {
     ICreateClient,

@@ -1,4 +1,4 @@
-import { IShopRepository } from '../../../repositories/User/Interfaces/IShopRepository';
+import { IShopRepository } from '../../../repositories/Interfaces/IShopRepository';
 
 
 interface IFindShopUseCaseRequest {

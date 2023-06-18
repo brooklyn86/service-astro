@@ -11,7 +11,7 @@ import {
   IGetCategoryResponse,
   IUpdateCategory,
 } from "../Interfaces/ICategoryController";
-import { PrismaCategoryRepository } from "../../../repositories/User/PrismaCategoryRepository";
+import { PrismaCategoryRepository } from "../../../repositories/PrismaCategoryRepository";
 import { CreateCategoryUseCase } from "../UseCases/CreateCategoryUseCase";
 import { FindCategoryUseCase } from "../UseCases/FindCategoryUseCase";
 import { FindManyCategoryUseCase } from "../UseCases/FindManyCategoryUseCase";
@@ -21,14 +21,14 @@ import { DeleteCategoryUseCase } from "../UseCases/DeleteCategoryUseCase";
 export class CategoryController implements ICategoryController {
     
   
-    async create({id, title, active}: ICreateCategory): Promise<ICreateCategoryResponse>{
+    async create({ title, active}: ICreateCategory): Promise<ICreateCategoryResponse>{
         const prismaCategoryRepository = new PrismaCategoryRepository();
         const createCategoryUseCase = new CreateCategoryUseCase(
             prismaCategoryRepository,
         ); 
           
         try {
-            return await createCategoryUseCase.execute({id, title, active});
+            return await createCategoryUseCase.execute({title, active});
         } catch (error) {
             throw new AppMessageError(error.message, 500);
         }

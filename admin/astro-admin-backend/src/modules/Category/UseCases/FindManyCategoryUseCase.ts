@@ -1,9 +1,9 @@
-import { ICategoryRepository, IShop } from "../../../repositories/User/Interfaces/ICategoryRepository"
+import { ICategoryRepository, IShop } from "../../../repositories/Interfaces/ICategoryRepository"
 
 export interface IFindManyCategoryUseCaseRequest {
-    id: string;
-    title: string;
-    active: boolean;
+    id?: string;
+    title?: string;
+    active?: boolean;
 }
 
 export interface IFindManyCategoryUseCaseResponse {
@@ -20,7 +20,7 @@ export class FindManyCategoryUseCase {
 
     async execute(request: IFindManyCategoryUseCaseRequest): Promise<IFindManyCategoryUseCaseResponse[]> {
         const {id, title, active} = request;
-        const queryLikers = [];
+        const queryLikers : any[] = [];
 
         if (id) {
             queryLikers.push({

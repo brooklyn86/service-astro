@@ -1,6 +1,6 @@
-import { IIsUniqueUsername } from './../../../repositories/User/Interfaces/IUserRepository';
+
 import { AppMessageError } from './../../../errors/AppMessageError';
-import { IUserRepository } from "../../../repositories/User/Interfaces/IUserRepository";
+import { IUserRepository } from "../../../repositories/Interfaces/IUserRepository";
 import { IPasswordValidatorAdapter } from '../../../adapters/interfaces/IPasswordValidatorAdapter';
 import { ICryptAdapter } from '../../../adapters/interfaces/ICryptAdapter';
 
