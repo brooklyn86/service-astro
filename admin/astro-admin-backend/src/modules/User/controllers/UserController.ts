@@ -1,24 +1,21 @@
+import { PrismaUserRepository } from './../../../repositories/User/PrismaUserRepository';
 
 import {
     IUserController,
     ICreateUser
 } from "../Interfaces/IUserController";
-import { PrismaProductBaseRepository } from "../../../repositories/Products/PrismaProductBaseRepository";
 import { AppMessageError } from "../../../errors/AppMessageError";
+import { CreateUserUseCase } from "../UseCases/CreateUserUseCase";
 
 export class UserController implements IUserController {
-    async create({ email,
-        password,
-        name,
-        username }: ICreateUser) {
-        const prismaProductsRepository = new PrismaProductBaseRepository();
-        const aliexpressAdapter = new AliexpressAdapter();
-        const createProductsUseCase = new CreateProductsUseCase(
-            prismaProductsRepository,
-            aliexpressAdapter
+    async create({ firstName, lastName, email, username, password, accepted }: ICreateUser) {
+        
+        const prismaUserRepository = new PrismaUserRepository()
+        const createProductsUseCase = new CreateUserUseCase(
+            prismaUserRepository,
         );
         try {
-            return await createProductsUseCase.execute({ product_id, video_url });
+            return await createProductsUseCase.execute({ firstName, lastName, email, username, password, accepted});
         } catch (error) {
             throw new AppMessageError(error.message, 500);
         }

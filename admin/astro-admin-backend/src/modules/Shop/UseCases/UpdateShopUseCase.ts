@@ -3,6 +3,8 @@ import { IShopRepository } from '../../../repositories/User/Interfaces/IShopRepo
 interface IUpdateShopUseCaseRequest {
     id: string;
     title: string;
+    client_id: string;
+    category_id: string;
     active: boolean;
     profile : {
         description: string;
@@ -16,7 +18,7 @@ export class UpdateShopUseCase {
         private shopRepository: IShopRepository,
     ) { }
     async execute(request: IUpdateShopUseCaseRequest): Promise<void> {
-        const { id, title, active, profile } = request;
-        await this.shopRepository.update({ id, title, active, profile})
+        const { id, title,client_id, category_id, active, profile } = request;
+        await this.shopRepository.update({ id, title, client_id, category_id, active, profile})
     }
 }

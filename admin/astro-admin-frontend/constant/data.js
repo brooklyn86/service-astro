@@ -24,7 +24,7 @@ export const menuItems = [
   {
     title: "Clientes",
     icon: "heroicons-outline:document",
-    link: "clients",
+    link: "dashboard/clients",
     isHide: true,
   },
   {

@@ -42,6 +42,11 @@ export class PrismaUserRepository implements IUserRepository {
             },
         });
     }
+    async findMany({ query }: IFindUserData): Promise<any[]> {
+        const users = await prisma.user.findMany(query)
+        //@ts-ignore
+        return users;
+    }
     async delete({ id }: IDeleteUserData) {
         await prisma.user.delete({
             where: {

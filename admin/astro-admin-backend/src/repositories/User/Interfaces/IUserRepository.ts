@@ -1,4 +1,3 @@
-
 export interface ICreateUserData {
     firstName: string;
     lastName: string;
@@ -24,6 +23,10 @@ export interface IFindUserData {
     username?: string
     email?: string
 }
+
+export interface IFindManyUserData {
+    query: any
+}
 export interface IIsUniqueEmail {
     email: string;
 }
@@ -38,5 +41,6 @@ export interface IUserRepository {
     create: (data: ICreateUserData) => Promise<ICreateUserResponse>;
     update: (data: IUpdateUserData) => Promise<void>;
     delete: (data: IDeleteUserData) => Promise<void>;
+    findMany: (data: IFindManyUserData) => Promise<any[]>;
     isUniqueEmail: (data: IIsUniqueEmail) => Promise<boolean>;
 }

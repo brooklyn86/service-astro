@@ -1,6 +1,8 @@
 
 export interface ICreateShopData {
     title: string;
+    client_id: string;
+    category_id: string;
     active?: boolean;
     profile : ICreateShopProfileData
 }

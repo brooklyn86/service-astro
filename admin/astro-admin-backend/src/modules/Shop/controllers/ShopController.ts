@@ -41,24 +41,24 @@ export class ShopController implements IShopController {
             throw new AppMessageError(error.message, 500);
         }
     };
-    async create({ title, active, profile }: ICreateShop): Promise<ICreateShopResponse> {
+    async create({ title, client_id, category_id, active, profile }: ICreateShop): Promise<ICreateShopResponse> {
         const prismaShopRepository = new PrismaShopRepository();
         const createShopUseCase = new CreateShopUseCase(
             prismaShopRepository,
         );
         try {
-            return await createShopUseCase.execute({ title, active, profile });
+            return await createShopUseCase.execute({ title, client_id, category_id, active, profile });
         } catch (error) {
             throw new AppMessageError(error.message, 500);
         }
     };
-    async update({ id, title, active, profile }: IUpdateShop): Promise<void> {
+    async update({ id, title, client_id, category_id, active, profile }: IUpdateShop): Promise<void> {
         const prismaShopRepository = new PrismaShopRepository();
         const updateShopUseCase = new UpdateShopUseCase(
             prismaShopRepository,
         );
         try {
-            await updateShopUseCase.execute({ id, title, active, profile });
+            await updateShopUseCase.execute({ id, title, client_id, category_id, active, profile });
         } catch (error) {
             throw new AppMessageError(error.message, 500);
         }

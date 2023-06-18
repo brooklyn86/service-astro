@@ -2,6 +2,8 @@ import { IShopRepository } from '../../../repositories/User/Interfaces/IShopRepo
 
 interface ICreateUserUseCaseRequest {
     title: string;
+    client_id: string;
+    category_id: string;
     active: boolean;
     profile : {
         description: string;
@@ -19,7 +21,7 @@ export class CreateShopUseCase {
         private shopRepository: IShopRepository,
     ) { }
     async execute(request: ICreateUserUseCaseRequest) : Promise<ICreateUserUseCaseResponse> {
-        const { title, active, profile } = request;
-        return await this.shopRepository.create({ title, active, profile})
+        const { title,client_id, category_id, active, profile } = request;
+        return await this.shopRepository.create({ title, client_id, category_id, active, profile})
     }
 }

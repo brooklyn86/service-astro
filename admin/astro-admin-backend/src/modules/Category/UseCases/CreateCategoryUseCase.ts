@@ -8,8 +8,6 @@ export interface ICreateCategoryUseCaseRequest {
 
 export interface ICreateCategoryUseCaseResponse {
     id: string,
-    title: string,
-    active: boolean
 }
 
 export class CreateCategoryUseCase {
