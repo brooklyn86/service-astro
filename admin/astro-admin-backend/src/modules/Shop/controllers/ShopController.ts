@@ -37,7 +37,7 @@ export class ShopController implements IShopController {
         );
         try {
             return await findManyShopUseCase.execute({ id, title, category_id, client_id, active });
-        } catch (error) {
+        } catch (error: any) {
             throw new AppMessageError(error.message, 500);
         }
     };

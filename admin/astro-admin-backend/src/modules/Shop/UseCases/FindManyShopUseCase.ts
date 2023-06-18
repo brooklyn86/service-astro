@@ -1,11 +1,11 @@
 import { IShopRepository } from '../../../repositories/User/Interfaces/IShopRepository';
 
 interface IFindShopUseCaseRequest {
-    id: string;
-    title: string;
-    client_id: string;
-    category_id: string;
-    active: boolean;
+    id?: string;
+    title?: string;
+    client_id?: string;
+    category_id?: string;
+    active?: boolean;
 }
 
 interface IFindManyShopUseCaseRequest {
@@ -27,7 +27,7 @@ export class FindManyShopUseCase {
     ) { }
     async execute(request: IFindShopUseCaseRequest): Promise<IFindManyShopUseCaseRequest[]> {
         const { id, title, active } = request;
-        const queryLikers = []
+        const queryLikers: any[] = [];
         if (id) {
             queryLikers.push({
                 id: {

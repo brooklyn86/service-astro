@@ -26,7 +26,7 @@ export class FindManyUserUseCase {
     ) { }
     async execute(request: IFindUserUseCaseRequest): Promise<any[]> {
         const { id, firstName, lastName, active } = request;
-        const queryLikers = []
+        const queryLikers: any[] = [];
         if (id) {
             queryLikers.push({
                 id: {
@@ -59,7 +59,7 @@ export class FindManyUserUseCase {
                 AND: queryLikers
             },
             include: {
-                profile:true
+                profile: true
             }
         }
         return await this.userRepository.findMany({ query })

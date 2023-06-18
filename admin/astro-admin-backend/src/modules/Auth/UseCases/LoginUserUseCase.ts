@@ -6,7 +6,7 @@ import * as jwt from "jsonwebtoken";
 interface ILoginUserUseCaseRequest {
   username: string;
   password: string;
-  remember: boolean;
+  remember?: boolean;
 }
 
 interface ILoginUserUseCaseResponse {
@@ -43,7 +43,7 @@ export class LoginUserUseCase {
         delete user.password_recovery;
         const token = jwt.sign(
           { userId: user.id, email: user.email },
-          process.env.JWT_SECRET,
+          process.env.JWT_SECRET || '',
           { expiresIn: "36h" }
         );
         return { user, token };
