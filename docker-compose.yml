@@ -1,5 +1,16 @@
 version: '3.7'
 services:
+
+    kong:
+      build:
+        context: Gateways/kong
+        dockerfile: Dockerfile
+      ports:
+        - "3306:3036"
+      volumes:
+        - ./Gateways/kong:/usr/kong-gateway
+      networks:
+        - astro-backend-networks
     astro-mysql-database:
       build:
         context: Database/astro-mysql-database
@@ -12,33 +23,91 @@ services:
         - ./Database/mysql-volume:/var/lib/mysql
       networks:
         - astro-backend-networks
-    astro-admin-backend:
+    service-astro-authentication:
       build:
-        context: Services/admin/astro-backend
+        context: Services/service-authentication
         dockerfile: Dockerfile
       restart: always
       ports:
-        - "3001:3001"
-        - "5555:5555"
+        - "8001:8001"
       env_file:
         - ./config/backend.env
       volumes:
-        - "./Services/admin/astro-backend/:/usr/astro-backend"
+        - "./Services/service-authentication/:/usr/service-authentication"
+        - "./Prisma:/usr/service-authentication/prisma"
       networks:
         - astro-backend-networks
-    astro-admin-frontend:
+
+    # service-astro-users:
+    #   build:
+    #     context: Services/service-users
+    #     dockerfile: Dockerfile
+    #   restart: always
+    #   ports:
+    #     - "8002:8002"
+    #   env_file:
+    #     - ./config/backend.env
+    #   volumes:
+    #     - "./Services/service-users/:/usr/service-users"
+    #     - "./Prisma:/usr/service-users/prisma"
+    #   networks:
+    #     - astro-backend-networks
+    # service-astro-products:
+    #   build:
+    #     context: Services/service-products
+    #     dockerfile: Dockerfile
+    #   restart: always
+    #   ports:
+    #     - "8003:8003"
+    #   env_file:
+    #     - ./config/backend.env
+    #   volumes:
+    #     - "./Services/service-products/:/usr/service-products"
+    #     - "./Prisma:/usr/service-products/prisma"
+    #   networks:
+    #     - astro-backend-networks
+    # service-astro-shops:
+    #   build:
+    #     context: Services/service-shops
+    #     dockerfile: Dockerfile
+    #   restart: always
+    #   ports:
+    #     - "8004:8004"
+    #   env_file:
+    #     - ./config/backend.env
+    #   volumes:
+    #     - "./Services/service-shops/:/usr/service-shops"
+    #     - "./Prisma:/usr/service-shops/prisma"
+    #   networks:
+    #     - astro-backend-networks
+    service-astro-client:
       build:
-        context: Frontends/admin/astro-admin-frontend
+        context: Services/service-client
         dockerfile: Dockerfile
       restart: always
       ports:
-        - "3000:3000"
+        - "8005:8005"
       env_file:
-        - ./config/frontend.env
+        - ./config/backend.env
       volumes:
-        - "./Frontends/admin/astro-admin-frontend/:/usr/astro-admin-frontend"
+        - "./Services/service-client/:/usr/service-client"
+        - "./Prisma:/usr/service-client/prisma"
       networks:
         - astro-backend-networks
+
+    # astro-admin-frontend:
+    #   build:
+    #     context: Frontends/admin/astro-admin-frontend
+    #     dockerfile: Dockerfile
+    #   restart: always
+    #   ports:
+    #     - "3000:3000"
+    #   env_file:
+    #     - ./config/frontend.env
+    #   volumes:
+    #     - "./Frontends/admin/astro-admin-frontend/:/usr/astro-admin-frontend"
+    #   networks:
+    #     - astro-backend-networks
 
 volumes:
     mysql-volume:
