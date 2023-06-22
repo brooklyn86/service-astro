@@ -1,5 +1,17 @@
 version: '3.7'
 services:
+    astro-mysql-database:
+      build:
+        context: Database/astro-mysql-database
+        dockerfile: Dockerfile
+      ports:
+        - "3306:3036"
+      env_file:
+        - ./config/database.env
+      volumes:
+        - ./Database/mysql-volume:/var/lib/mysql
+      networks:
+        - astro-backend-networks
     astro-admin-backend:
       build:
         context: Services/admin/astro-backend
@@ -27,18 +39,7 @@ services:
         - "./Frontends/admin/astro-admin-frontend/:/usr/astro-admin-frontend"
       networks:
         - astro-backend-networks
-    astro-mysql-database:
-      build:
-        context: Database/astro-mysql-database
-        dockerfile: Dockerfile
-      ports:
-        - "3306:3036"
-      env_file:
-        - ./config/database.env
-      volumes:
-        - ./Database/mysql-volume:/var/lib/mysql
-      networks:
-        - astro-backend-networks
+
 volumes:
     mysql-volume:
 networks:
