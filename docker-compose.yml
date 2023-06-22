@@ -12,21 +12,34 @@ services:
         - ./config/backend.env
       volumes:
         - "./Services/admin/astro-backend/:/usr/astro-backend"
-      # environment:
-      #   MYSQL_HOST: mysql
-      #   MYSQL_USER: root
-      #   MYSQL_PASSWORD: <your-password>
-      #   MYSQL_DB: todos
+      networks:
+        - astro-backend-networks
+    astro-admin-frontend:
+      build:
+        context: Frontends/admin/astro-admin-frontend
+        dockerfile: Dockerfile
+      restart: always
+      ports:
+        - "3000:3000"
+      env_file:
+        - ./config/frontend.env
+      volumes:
+        - "./Frontends/admin/astro-admin-frontend/:/usr/astro-admin-frontend"
+      networks:
+        - astro-backend-networks
     astro-mysql-database:
-        image: astro-mysql-database
-        ports:
-            - "3306:3036"
-        environment:
-            MYSQL_ROOT_PASSWORD: astro
-            MYSQL_DATABASE: astro
-            MYSQL_USER: astro
-            MYSQL_PASSWORD: astro
-        volumes:
-             - ./Database/mysql-volume:/var/lib/mysql
+      build:
+        context: Database/astro-mysql-database
+        dockerfile: Dockerfile
+      ports:
+        - "3306:3036"
+      env_file:
+        - ./config/database.env
+      volumes:
+        - ./Database/mysql-volume:/var/lib/mysql
+      networks:
+        - astro-backend-networks
 volumes:
     mysql-volume:
+networks:
+  astro-backend-networks: 

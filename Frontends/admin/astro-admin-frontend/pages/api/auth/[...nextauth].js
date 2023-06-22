@@ -16,7 +16,7 @@ export const authOptions = {
         }),
         GithubProvider({
             clientId: process.env.GITHUB_ID,
-            clientSecret: process.env.GITHUB_SECRE
+            clientSecret: process.env.GITHUB_SECRET
         }),
         CredentialsProvider({
             // The name to display on the sign in form (e.g. 'Sign in with...')

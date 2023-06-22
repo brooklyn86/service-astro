@@ -47,7 +47,7 @@
     "react-flatpickr": "^3.10.13",
     "react-hook-form": "^7.43.5",
     "react-leaflet": "^4.2.0",
-    "react-quill": "^2.0.0",
+    "react-quill": "^0.0.2",
     "react-redux": "^8.0.5",
     "react-select": "^5.7.0",
     "react-svg-map": "^2.2.0",
@@ -58,7 +58,7 @@
     "recharts": "^2.5.0",
     "sass": "^1.59.3",
     "simplebar-react": "^3.2.1",
-    "sort-by": "^1.2.0",
+    "sort-by": "^0.0.2",
     "swiper": "^9.1.0",
     "uuidv4": "^6.2.13",
     "yup": "^1.0.2"

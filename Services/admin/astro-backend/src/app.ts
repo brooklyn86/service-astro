@@ -9,6 +9,7 @@ import { clientRoutes } from "./routes/client.routes";
 // import { productsRoutes } from "./routes/products.routes";
 import { ErrorMiddleware } from "./middleware/ErrorMiddleware";
 import cookieParser from "cookie-parser";
+import { categoryRoutes } from "./routes/category.routes";
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -19,6 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/auth", authRoutes);
 app.use("/shop", shopRoutes);
 app.use("/client", clientRoutes);
+app.use("/category", categoryRoutes);
 
 
 app.listen(process.env.PORT);
