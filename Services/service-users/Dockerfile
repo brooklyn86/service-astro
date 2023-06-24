@@ -2,8 +2,8 @@ FROM alpine:3.17
 
 ENV NODE_VERSION 18.16.0
 
-WORKDIR /usr/astro-backend
-RUN chmod -R 777 /usr/astro-backend
+WORKDIR /usr/service-users
+RUN chmod -R 777 /usr/service-users
 
 COPY package.json ./
 RUN apk add --update nodejs npm

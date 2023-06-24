@@ -1,16 +1,5 @@
 version: '3.7'
 services:
-
-    kong:
-      build:
-        context: Gateways/kong
-        dockerfile: Dockerfile
-      ports:
-        - "3306:3036"
-      volumes:
-        - ./Gateways/kong:/usr/kong-gateway
-      networks:
-        - astro-backend-networks
     astro-mysql-database:
       build:
         context: Database/astro-mysql-database
@@ -66,23 +55,23 @@ services:
     #     - "./Prisma:/usr/service-products/prisma"
     #   networks:
     #     - astro-backend-networks
-    # service-astro-shops:
-    #   build:
-    #     context: Services/service-shops
-    #     dockerfile: Dockerfile
-    #   restart: always
-    #   ports:
-    #     - "8004:8004"
-    #   env_file:
-    #     - ./config/backend.env
-    #   volumes:
-    #     - "./Services/service-shops/:/usr/service-shops"
-    #     - "./Prisma:/usr/service-shops/prisma"
-    #   networks:
-    #     - astro-backend-networks
+    service-astro-shops:
+      build:
+        context: Services/service-shops
+        dockerfile: Dockerfile
+      restart: always
+      ports:
+        - "8004:8004"
+      env_file:
+        - ./config/backend.env
+      volumes:
+        - "./Services/service-shops/:/usr/service-shops"
+        - "./Prisma:/usr/service-shops/prisma"
+      networks:
+        - astro-backend-networks
     service-astro-client:
       build:
-        context: Services/service-client
+        context: Services/service-clients
         dockerfile: Dockerfile
       restart: always
       ports:
@@ -90,11 +79,24 @@ services:
       env_file:
         - ./config/backend.env
       volumes:
-        - "./Services/service-client/:/usr/service-client"
-        - "./Prisma:/usr/service-client/prisma"
+        - "./Services/service-clients/:/usr/service-client"
+        - "./Prisma:/usr/service-clients/prisma"
       networks:
         - astro-backend-networks
-
+    service-astro-categories:
+      build:
+        context: Services/service-categories
+        dockerfile: Dockerfile
+      restart: always
+      ports:
+        - "8006:8006"
+      env_file:
+        - ./config/backend.env
+      volumes:
+        - "./Services/service-categories/:/usr/service-categories"
+        - "./Prisma:/usr/service-categories/prisma"
+      networks:
+        - astro-backend-networks
     # astro-admin-frontend:
     #   build:
     #     context: Frontends/admin/astro-admin-frontend

@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-authentication-deployment
+spec: 
+  replicas: 4
+  selector:
+    matchLabels:
+      app: service-authentication
+  template:
+    metadata:
+      labels:
+        app: service-authentication
+    spec: 
+      containers:
+        - name: astro-service-authentication
+          image: brooklyn86/service-authentication:latest
+          resources:
+            limits:
+              memory: 512Mi
+              cpu: "1"
+            requests:
+              memory: 256Mi
+              cpu: "0.2"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-authentication-service
+spec:
+  selector:
+    app: service-authentication
+  ports:
+    - protocol: "TCP"
+      port: 8001
+      targetPort: 8001
+  type: LoadBalancer
