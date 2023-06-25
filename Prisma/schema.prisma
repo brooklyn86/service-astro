@@ -150,6 +150,18 @@ model User {
   @@map("users")
 }
 
+model Products {
+  id         String   @id @default(uuid())
+  name       String?
+  type       String
+  active     Boolean  @default(true)
+  createdAt  DateTime @default(now())
+  updateAt   DateTime @updatedAt
+  expireDate DateTime
+
+  @@map("products")
+}
+
 model VerificationToken {
   identifier String
   token      String   @unique

@@ -150,6 +150,39 @@ model User {
   @@map("users")
 }
 
+model Products {
+  id             String         @id @default(uuid())
+  name           String
+  type           ProductType    @relation(fields: [productTypeId], references: [id])
+  active         Boolean        @default(true)
+  createdAt      DateTime       @default(now())
+  updateAt       DateTime       @updatedAt
+  expireDate     DateTime
+  productTypeId  String
+  images         ProductImage[]
+  productImageId String
+
+  @@map("products")
+}
+
+model ProductType {
+  id       String     @id @default(uuid())
+  name     String
+  Products Products[]
+
+  @@map("products_types")
+}
+
+model ProductImage {
+  id         String    @id @default(uuid())
+  urlPath    String
+  isCover    Boolean   @default(false)
+  productsId String?
+  products   Products? @relation(fields: [productsId], references: [id])
+
+  @@map("products_images")
+}
+
 model VerificationToken {
   identifier String
   token      String   @unique

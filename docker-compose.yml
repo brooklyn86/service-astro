@@ -125,20 +125,6 @@ services:
     #     - "./Prisma:/usr/service-users/prisma"
     #   networks:
     #     - astro-backend-networks
-    # service-astro-products:
-    #   build:
-    #     context: Services/service-products
-    #     dockerfile: Dockerfile
-    #   restart: always
-    #   ports:
-    #     - "8003:8003"
-    #   env_file:
-    #     - ./config/backend.env
-    #   volumes:
-    #     - "./Services/service-products/:/usr/service-products"
-    #     - "./Prisma:/usr/service-products/prisma"
-    #   networks:
-    #     - astro-backend-networks
     service-astro-shops:
       build:
         context: Services/service-shops
@@ -179,6 +165,20 @@ services:
       volumes:
         - "./Services/service-categories/:/usr/service-categories"
         - "./Prisma:/usr/service-categories/prisma"
+      networks:
+        - astro-backend-networks
+    service-astro-products:
+      build:
+        context: Services/service-products
+        dockerfile: Dockerfile
+      restart: always
+      ports:
+        - "8007:8007"
+      env_file:
+        - ./config/backend.env
+      volumes:
+        - "./Services/service-products/:/usr/service-products"
+        - "./Primas:/usr/service-products/prisma"
       networks:
         - astro-backend-networks
     whoami:
